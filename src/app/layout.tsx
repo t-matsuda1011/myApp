@@ -1,8 +1,10 @@
+"use client"
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import QuizIcon from '@mui/icons-material/Quiz';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -10,6 +12,9 @@ import LayersIcon from '@mui/icons-material/Layers';
 import { AppProvider, type Navigation } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
+import { ReactNode } from 'react';
+
+type Props = { children: ReactNode };
 
 const NAVIGATION: Navigation = [
   {
@@ -17,9 +22,9 @@ const NAVIGATION: Navigation = [
     title: 'Main items',
   },
   {
-    segment: 'dashboard',
-    title: 'Dashboard',
-    icon: <DashboardIcon />,
+    segment: 'quiz',
+    title: 'quiz',
+    icon: <QuizIcon />,
   },
   {
     segment: 'orders',
@@ -73,7 +78,7 @@ const demoTheme = createTheme({
   },
 });
 
-function DemoPageContent({ pathname }: { pathname: string }) {
+function Layout({ pathname }: { pathname: string }, { children }: Props) {
   return (
     <Box
       sx={{
@@ -84,7 +89,7 @@ function DemoPageContent({ pathname }: { pathname: string }) {
         textAlign: 'center',
       }}
     >
-      <Typography>Dashboard content for {pathname}</Typography>
+      { children }
     </Box>
   );
 }
@@ -107,16 +112,20 @@ export default function DashboardLayoutBasic(props: DemoProps) {
 
   return (
     // preview-start
-    <AppProvider
-      navigation={NAVIGATION}
-      router={router}
-      theme={demoTheme}
-      window={demoWindow}
-    >
-      <DashboardLayout>
-        <DemoPageContent pathname={router.pathname} />
-      </DashboardLayout>
-    </AppProvider>
+    <html>
+      <body>
+        <AppProvider
+          navigation={NAVIGATION}
+          router={router}
+          theme={demoTheme}
+          window={demoWindow}
+        >
+          <DashboardLayout>
+            <Layout pathname={router.pathname} />
+          </DashboardLayout>
+        </AppProvider>
+      </body>
+    </html>
     // preview-end
   );
 }

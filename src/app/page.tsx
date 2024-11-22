@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>this is top page test test test aaaaaaaaaaa</div>;
+  return <div>ここはトップページです。</div>;
 }

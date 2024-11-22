@@ -1,60 +1,67 @@
-"use client";
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import QuizIcon from '@mui/icons-material/Quiz';
-import StickyNote2Icon from '@mui/icons-material/StickyNote2';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import DescriptionIcon from '@mui/icons-material/Description';
+import LayersIcon from '@mui/icons-material/Layers';
 import { AppProvider, type Navigation } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
-import Link from 'next/link';
-
 
 const NAVIGATION: Navigation = [
   {
     kind: 'header',
-    title: 'Menu',
+    title: 'Main items',
   },
   {
-    segment: 'Top',
-    title: 'Top',
+    segment: 'dashboard',
+    title: 'Dashboard',
     icon: <DashboardIcon />,
   },
   {
-    segment: 'Quiz',
-    title: 'Quiz',
-    icon: <QuizIcon />,
+    segment: 'orders',
+    title: 'Orders',
+    icon: <ShoppingCartIcon />,
   },
   {
-    segment: 'Wiki',
-    title: 'Wiki',
-    icon: <StickyNote2Icon />,
+    kind: 'divider',
+  },
+  {
+    kind: 'header',
+    title: 'Analytics',
+  },
+  {
+    segment: 'reports',
+    title: 'Reports',
+    icon: <BarChartIcon />,
+    children: [
+      {
+        segment: 'sales',
+        title: 'Sales',
+        icon: <DescriptionIcon />,
+      },
+      {
+        segment: 'traffic',
+        title: 'Traffic',
+        icon: <DescriptionIcon />,
+      },
+    ],
+  },
+  {
+    segment: 'integrations',
+    title: 'Integrations',
+    icon: <LayersIcon />,
   },
 ];
 
-const customTheme = createTheme({
-  colorSchemes: {
-    light: {
-      palette: {
-        background: {
-          default: '#F9F9FE',
-          paper: '#EEEEF9',
-        },
-      },
-    },
-    dark: {
-      palette: {
-        background: {
-          default: '#2A4364',
-          paper: '#112E4D',
-        },
-      },
-    },
+const demoTheme = createTheme({
+  cssVariables: {
+    colorSchemeSelector: 'data-toolpad-color-scheme',
   },
+  colorSchemes: { light: true, dark: true },
   breakpoints: {
     values: {
       xs: 0,
@@ -66,38 +73,50 @@ const customTheme = createTheme({
   },
 });
 
+function DemoPageContent({ pathname }: { pathname: string }) {
+  return (
+    <Box
+      sx={{
+        py: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+      }}
+    >
+      <Typography>Dashboard content for {pathname}</Typography>
+    </Box>
+  );
+}
 
-export default function ( {children}: {children: React.ReactNode}) {
+interface DemoProps {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * Remove this when copying and pasting into your project.
+   */
+  window?: () => Window;
+}
 
-  const router = useDemoRouter('/quiz');
+export default function DashboardLayoutBasic(props: DemoProps) {
+  const { window } = props;
+
+  const router = useDemoRouter('/dashboard');
+
+  // Remove this const when copying and pasting into your project.
+  const demoWindow = window !== undefined ? window() : undefined;
 
   return (
-    <html>
-      <body>
-        <AppProvider
-          navigation={NAVIGATION}
-          router={router}
-          theme={customTheme}
-          branding={{
-            logo: <SmartToyIcon/>,
-            title: 'まつだ'
-          }}
-        >
-          <DashboardLayout>
-            <Box
-              sx={{
-                py: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-              }}
-            >
-              {children}
-            </Box>
-          </DashboardLayout>
-        </AppProvider>
-      </body>
-    </html>
+    // preview-start
+    <AppProvider
+      navigation={NAVIGATION}
+      router={router}
+      theme={demoTheme}
+      window={demoWindow}
+    >
+      <DashboardLayout>
+        <DemoPageContent pathname={router.pathname} />
+      </DashboardLayout>
+    </AppProvider>
+    // preview-end
   );
 }

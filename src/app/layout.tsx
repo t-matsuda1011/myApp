@@ -9,7 +9,7 @@ export default function Layout({ children }: Props) {
     <html>
       <body>
         <Header />
-        <main className="pt-16">
+        <main className="mx-auto px-10 pt-16 max-w-7xl flex items-center justify-between">
           {children}
         </main>
       </body>

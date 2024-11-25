@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Header = () => {
     return (
@@ -7,9 +8,9 @@ const Header = () => {
                 <h1 className="text-lg font-bold">まつだ</h1>
                 <nav>
                     <ul className="flex space-x-4">
-                        <li><a href="/" className="hover:text-gray-300">Home</a></li>
-                        <li><a href="/about" className="hover:text-gray-300">About</a></li>
-                        <li><a href="/quiz" className="hover:text-gray-300">Quiz</a></li>
+                        <li><Link href="/" className="hover:text-gray-300 transition-all">Home</Link></li>
+                        <li><Link href="/about" className="hover:text-gray-300 transition-all">About</Link></li>
+                        <li><Link href="/quiz" className="hover:text-gray-300 transition-all">Quiz</Link></li>
                     </ul>
                 </nav>
             </div>

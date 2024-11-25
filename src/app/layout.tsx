@@ -8,12 +8,12 @@ type Props = { children: ReactNode };
 const Layout: React.FC<Props> = React.memo(({ children }: Props) => {
   return (
     <html>
+      <BackgroundAnime/>
       <body>
         <Header />
         <main className="mx-auto px-10 pt-16 text-center">
           {children}
         </main>
-        <BackgroundAnime/>
       </body>
     </html>
   );

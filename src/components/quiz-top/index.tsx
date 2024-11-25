@@ -2,10 +2,10 @@ import React from 'react';
 
 const Quiztop = () => {
     return (
-        <div className="w-3/5 title mx-auto p-5 bg-green-600 rounded-xl text-center text-white font-bold">
+        <div className="md:w-3/6 title mx-auto p-5 bg-green-600 rounded-xl text-center text-white font-bold">
             <h1 className="title-text text-3xl">クイズ</h1>
-            <form action="" className="mx-auto rounded- font-normal mt-2">
-                <select name="" id="quizSelect" className="text-black w-full text-sm rounded-md text-center p-1">
+            <form action="" className="mx-auto rounded-xl font-normal mt-2">
+                <select name="" id="quizSelect" className="text-black md:w-full w-full text-sm rounded-md text-center p-1">
                     <option value="">カテゴリーを選択してください</option>
                     <option value="0">ダイアンクイズ</option>
                     <option value="1">雑学クイズ</option>

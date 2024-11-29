@@ -23,4 +23,5 @@ const CardContents = ({name, nickname, bio}: Props) => {
     );
 };
 
+CardContents.displayName = 'CardContents';
 export default CardContents;

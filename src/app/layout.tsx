@@ -5,7 +5,7 @@ import BackgroundAnime from '@/components/background-animation';
 
 type Props = { children: ReactNode };
 
-const Layout: React.FC<Props> = React.memo(({ children }: Props) => {
+export default function Layout({ children }: Props) {
   return (
     <html>
       <BackgroundAnime/>
@@ -17,7 +17,6 @@ const Layout: React.FC<Props> = React.memo(({ children }: Props) => {
       </body>
     </html>
   );
-});
+}
 
 Layout.displayName = 'Layout';
-export default Layout;

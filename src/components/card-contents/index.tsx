@@ -1,6 +1,5 @@
 "use client";
 
-import React, { ReactNode } from 'react';
 import Button from '@mui/material/Button';
 
 type Props = { name: string, nickname: string, bio:string };

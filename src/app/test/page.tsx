@@ -23,6 +23,16 @@ export default function Page() {
                     name="this is test"
                     nickname="test yade"
                 />
+                <CardContents
+                    bio="test"
+                    name="test"
+                    nickname="test yade"
+                />
+                <CardContents
+                    bio="hello"
+                    name="Hello"
+                    nickname="^-^"
+                />
             </div>
         </div>
     );

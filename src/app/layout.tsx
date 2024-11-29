@@ -11,7 +11,7 @@ export default function Layout({ children }: Props) {
       <BackgroundAnime/>
       <body>
         <Header />
-        <main className="mx-auto px-10 pt-16 text-center">
+        <main className="mx-auto px-10 pt-16 pb-20 text-center">
           {children}
         </main>
       </body>

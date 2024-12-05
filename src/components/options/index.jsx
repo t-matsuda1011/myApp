@@ -2,14 +2,14 @@
 
 import React from "react";
 
-export default function Options({ answers }) {
+export default function Options({ answers, click }) {
     return (
         <div className="mt-5">
             {answers.map((answer) => (
                 <button
                     className="rounded-xl p-5 mb-2 mr-2 bg-green-600 hover:bg-green-800 text-white transition-all"
                     key={answer}
-                    onClick={() => alert(answer)}
+                    onClick={click(answer)}
                 >
                     {answer}
                 </button>

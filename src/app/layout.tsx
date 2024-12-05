@@ -8,12 +8,12 @@ type Props = { children: ReactNode };
 export default function Layout({ children }: Props) {
   return (
     <html>
-      <BackgroundAnime/>
       <body>
         <Header />
         <main className="mx-auto px-10 pt-16 pb-20 text-center">
           {children}
         </main>
+        <BackgroundAnime/>
       </body>
     </html>
   );

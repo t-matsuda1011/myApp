@@ -23,6 +23,7 @@ const [selectAnswer, setSelectAnswer] = useState(null);
         setShowPopup(true);
     }
 
+    //次の問題へ
     const onNextQuestion = () => {
         if (currentIndex < quizList.length - 1) {
             setCurrentIndex(currentIndex + 1);

@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 export default function Options({ answers, click }) {
     return (
         <div className="mt-5">

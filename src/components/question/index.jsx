@@ -1,9 +1,5 @@
-import React from "react";
-
-const Question = ({text}) => {
+export default function Question({text}) {
     return (
         <p>{text}</p>
     );
 };
-
-export default Question;

@@ -1,27 +1,17 @@
 "use client";
-import React, { useState } from 'react';
+
 import Question from '../../components/question';
 import Options from '../../components/options';
-import quizList from './quizData.json';
+import PopUpComment from '../../components/popup-comment';
+import { useQuizLogic } from './useQuizLogic';
 
 const QuizApp = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const currentQuiz = quizList[currentIndex];
-
-    const checkAnswer = (answer) => () => {
-        if (answer === currentQuiz.correct) {
-            alert("正解です！");
-        } else {
-            alert("不正解です！");
-        }
-
-        if (currentIndex < quizList.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        } else {
-            alert("終了です！");
-            setCurrentIndex(0);
-        }
-    }
+    const {
+        currentQuiz,
+        isCorrect,
+        checkAnswer,
+        onNextQuestion,
+    } = useQuizLogic();
 
     return (
         <div>
@@ -31,8 +21,16 @@ const QuizApp = () => {
                 correct={currentQuiz.correct}
                 click={checkAnswer}
             />
+            {/* <PopUpComment
+                isCorrect={isCorrect}
+                question={currentQuiz.question}
+                correct={currentQuiz.correct}
+                answer={currentQuiz.answer}
+                explanation={currentQuiz.explanation}
+                click={onNextQuestion}
+            /> */}
         </div>
-    )
+    );
 };
 
 export default QuizApp;

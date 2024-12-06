@@ -9,6 +9,8 @@ const QuizApp = () => {
     const {
         currentQuiz,
         isCorrect,
+        showPopup,
+        selectAnswer,
         checkAnswer,
         onNextQuestion,
     } = useQuizLogic();
@@ -21,14 +23,18 @@ const QuizApp = () => {
                 correct={currentQuiz.correct}
                 click={checkAnswer}
             />
-            {/* <PopUpComment
-                isCorrect={isCorrect}
-                question={currentQuiz.question}
-                correct={currentQuiz.correct}
-                answer={currentQuiz.answer}
-                explanation={currentQuiz.explanation}
-                click={onNextQuestion}
-            /> */}
+            {
+                showPopup && (
+                    <PopUpComment
+                        isCorrect={isCorrect}
+                        question={currentQuiz.question}
+                        correct={currentQuiz.correct}
+                        answer={selectAnswer}
+                        explanation={currentQuiz.explanation}
+                        click={onNextQuestion}
+                    />
+                )   
+            }
         </div>
     );
 };

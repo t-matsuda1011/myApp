@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Header = () => {
     return (
-        <header className="fixed top-0 w-full bg-gray-800 text-white shadow-md z-50">
+        <header style={{zIndex: "1001"}} className="fixed top-0 w-full bg-gray-800 text-white shadow-md z-50">
             <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
                 <h1 className="text-lg font-bold">まつだ</h1>
                 <nav>

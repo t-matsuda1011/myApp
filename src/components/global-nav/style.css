@@ -1,0 +1,72 @@
+.nav-list {
+    display: flex; /* 横並びに配置 */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative; /* サブメニューを絶対位置で配置するため */
+    margin-right: 5px;
+}
+.nav-item:last-child {
+    margin-right: 0;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: inline-block; /* ホバー領域を確保 */
+}
+
+.nav-item:hover a {
+    color: #f0f0f0;
+}
+
+.submenu-container {
+    position: absolute;
+    top: 140%; /* 隙間を空ける */
+    left: 0;
+    visibility: hidden; /* デフォルトは非表示 */
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* ぼんやり表示、非表示のアニメーション */
+}
+
+.nav-item:hover .submenu-container {
+    visibility: visible; /* ホバー時に表示 */
+    opacity: 1;
+}
+
+/* 透明なエリアを追加 */
+.nav-item:hover::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* 親要素の下に配置 */
+    left: 0;
+    width: 100%;
+    height: 40px; /* 親とサブメニューの間隔 */
+    background: transparent; /* 背景を透明に */
+    pointer-events: auto; /* このエリアをホバー可能に */
+    z-index: 999;
+}
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.submenu-item {
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    border-radius: 0.5rem;
+    background-color: #202937;
+    text-align: center;
+}
+
+.submenu-item:hover {
+    background-color: #363e4b;
+    transition: all 0.3s ease;
+}
